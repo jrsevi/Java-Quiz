@@ -9,8 +9,7 @@ n/a
 ## Usage
 To start the quiz press the start button and answer the questions as they pop up. After the quiz is finished it will have the user enter their name or initials and save their score for them in the high scores page and in the local storage. The high scores page displays the scores from best to worst.
 
-To use this page visit the link: https://jrsevi.github.io/Java-Quiz/
-
+To use this page visit the link: 
 ![Webpage Screenshot](./Screenshot%202023-11-28%20201804.png)
  
 
