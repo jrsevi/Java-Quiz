@@ -1,8 +1,8 @@
 
 
 // Questions for the quiz{
-],
-},
+
+var questions= [
 {
     prompt: "True or False: Java Script is case sensitive",
 
@@ -45,6 +45,7 @@
     options: ["AND", "OR", "NOT"],
     answer: "AND",
 },
+]
 
 let questionsEl = document.querySelector("#questions");
 
