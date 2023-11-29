@@ -2,7 +2,7 @@
 
 // Questions for the quiz{
 
-var questions= [
+var questions = [
 {
     prompt: "True or False: Java Script is case sensitive",
 
@@ -17,7 +17,7 @@ var questions= [
 },
 
 {
-    prompt: "Whic syntax is used to call a function?",
+    prompt: "Which syntax is used to call a function?",
     options: ["functionName()", "functionName", "functionName[]"],
     answer: "functionName()",
 },
@@ -57,6 +57,8 @@ let submitBtn = document.querySelector("#submit");
 
 let startBtn = document.querySelector("#start");
 
+let nameEl = document.querySelector("#name");
+
 let restartBtn = document.querySelector("#restart");
 
 
@@ -75,13 +77,13 @@ function quizStart() {
 }
 
 function getQuestion() {
-    let curretnQuestion = questions[currentQuestionIndex];
+    let currentQuestion = questions[currentQuestionIndex];
     let promptEl = document.getElementById("question");
 
-    promptEl.textContent = curretnQuestion.prompt;
+    promptEl.textContent = currentQuestion.prompt;
     choicesEl.innerHTML = "";
     currentQuestion.options.forEach(
-        Function(choice, i){
+        function(choice, i){
             let choiceBtn = document.createElement("button");
             choiceBtn.setAttribute("value", choice);
             choiceBtn.textContent = i + 1 + ". " + choice;
