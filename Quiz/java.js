@@ -12,7 +12,7 @@ var questions = [
 
 {
     prompt: "Which definition below describes a FUNCTION in Java Script?",
-    options: ["A reusable block of code that performs a specific task", "Something we use to store groups of data", "A way we can store a single piece of data"],
+    options: ["Something we use to store groups of data", "A reusable block of code that performs a specific task", "A way we can store a single piece of data"],
     answer: "A reusable block of code that performs a specific task",
 },
 
@@ -30,7 +30,7 @@ var questions = [
 
 {
     prompt: "How do you start a while loop?",
-    options: ["while (i < 5)", "while (i < 5; i++)", "while (i < 5; i--)"],
+    options: ["while (i < 5; i++)", "while (i < 5; i--)", "while (i < 5)"],
     answer: "while (i < 5)",
 },
 
@@ -42,12 +42,14 @@ var questions = [
 
 {
     prompt: "What does && mean?",
-    options: ["AND", "OR", "NOT"],
+    options: ["OR", "NOT", "AND"],
     answer: "AND",
 },
 ]
 
-let questionsEl = document.querySelector("#questions");
+/*Elements*/
+
+let questionsEl = document.querySelector("#question");
 
 let timerEl = document.querySelector("#timer");
 
@@ -61,10 +63,13 @@ let nameEl = document.querySelector("#name");
 
 let restartBtn = document.querySelector("#restart");
 
+/*Default Values*/
 
 let currentQuestionIndex = 0;
 let time = questions.length * 20;
 let timerId;
+
+/*Quiz Start*/
 
 function quizStart() {
     timerId = setInterval(clockTick, 1000);
@@ -81,14 +86,14 @@ function getQuestion() {
     let promptEl = document.getElementById("question");
 
     promptEl.textContent = currentQuestion.prompt;
-    choicesEl.innerHTML = "";
+    optionsEl.innerHTML = "";
     currentQuestion.options.forEach(
         function(choice, i){
             let choiceBtn = document.createElement("button");
             choiceBtn.setAttribute("value", choice);
             choiceBtn.textContent = i + 1 + ". " + choice;
-            choiceBtn.onClick = questionClick;
-            choicesEl.appendChild(choiceBtn);
+            choiceBtn.addEventListener("click",questionClick);
+            optionsEl.appendChild(choiceBtn);
         });
 }
 
@@ -111,6 +116,7 @@ function questionClick() {
     }
 }
 
+/*End Quiz*/
 
 function quizEnd() {
     clearInterval(timerId);
@@ -129,10 +135,13 @@ function clockTick() {
     }
 }
 
+/* Save Scores*/
+
 function saveHighscore() {
     let name = nameEl.value.trim();
     if (name !=="") {
-        let highscores = JSON.parse(window,localStorage.getItem("scores")
+        let highscores = JSON.parse(
+            window.localStorage.getItem("scores")
         ) || [];
         let newScore = {
             score: time,
@@ -141,8 +150,8 @@ function saveHighscore() {
         highscores.push(newScore);
         window.localStorage.setItem("scores", JSON.stringify(highscores));
         alert(
-            "Score saves!"
-        )
+            "Score saved!"
+        );
     }
 }
 
@@ -152,6 +161,9 @@ function checkForEnter(event) {
         alert("Score saved!");
     }
 }
+
+/*Events*/
+
 nameEl.onKeyup = checkForEnter;
 
 submitBtn.onclick = saveHighscore;

@@ -9,7 +9,7 @@
 }
 
 .Container {
-    border: 5px solid; 
+    border: 5px solid blue; 
     position: absolute; 
     top: 35%; 
     left: 50%; 
@@ -20,8 +20,8 @@
 }
 
 
-h1,
-h2 {
+h1 {
+    font-size: xx-large;
     text-align: center;
 }
 
@@ -39,6 +39,7 @@ p {
     position: relative;
     top:15px;
     left:15px;
+    background-color: pink;
 
 
 }
@@ -50,12 +51,14 @@ p {
 
 }
 
+/*Buttons*/
+
 button {
     text-align:center;
     display:inline-block;
     margin:15px;
     color: white;
-    background-color: blue;
+    background-color: orange;
     border:0;
     padding:15px;
 }
@@ -72,17 +75,27 @@ background-color: red;
     display: none;
 }
 
+/*List*/
+
 ol {
     padding-left: 20px;
-    max-height:75%;
+    max-height:400px;
+    overflow:auto;
 }
 
 li {
     padding: 5px;
-    list-style:circle;
+    list-style:none;
 
 }
 
+li:nth-child(even) {
+    background-color: green;
+    color: White;
+}
+
+
+/*Media Queries*/
 @media screen and (max-width: 600px) { 
     .container{
         width:80%;
